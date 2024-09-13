@@ -2,16 +2,14 @@ const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
 
 // Inicialización del cliente
+// Inicialización del cliente
 const client = new Client({
-    authStrategy: new LocalAuth({
-        dataPath: './whatsapp-session'
-    }),
+    authStrategy: new LocalAuth(),
     puppeteer: {
         headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
-        timeout: 60000 // Tiempo de espera de 60 segundos
+        timeout: 60000
     }
-});
+})
 
 // Genera el QR si no estás autenticado
 client.on('qr', (qr) => {
