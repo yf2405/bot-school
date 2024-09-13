@@ -4,20 +4,11 @@ const qrcode = require('qrcode-terminal');
 // Inicialización del cliente
 const client = new Client({
     authStrategy: new LocalAuth({
-        dataPath: './whatsapp-session' // Guardar la sesión aquí
+        dataPath: './whatsapp-session'
     }),
     puppeteer: {
-        headless: true, // Ejecutar sin abrir el navegador visual
-        args: [
-            '--no-sandbox', // Deshabilita el sandboxing (importante para entornos como Render)
-            '--disable-setuid-sandbox', // Optimización adicional para evitar problemas de permisos
-            '--disable-dev-shm-usage', // Mejora el rendimiento en algunos entornos de nube
-            '--disable-accelerated-2d-canvas',
-            '--no-first-run',
-            '--no-zygote',
-            '--single-process', // Utiliza un único proceso
-            '--disable-gpu' // Deshabilita el uso de GPU
-        ],
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
     }
 });
 
