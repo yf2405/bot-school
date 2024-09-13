@@ -11,10 +11,9 @@ const client = new Client({
 
 // Genera el QR si no estás autenticado
 client.on('qr', (qr) => {
-    qrcode.generate(qr, { small: true });
-    console.log('Escanea el código QR para iniciar sesión.');
+    const qrImageUrl = `https://quickchart.io/qr?text=${encodeURIComponent(qr)}&size=200`;
+    console.log(`Escanea el código QR aquí: ${qrImageUrl}`);
 });
-
 // El bot está listo
 client.on('ready', () => {
     console.log('El bot está listo y conectado.');
